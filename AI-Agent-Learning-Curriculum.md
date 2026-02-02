@@ -18,6 +18,87 @@ This curriculum guides you through teaching AI agent development from fundamenta
 - **Verification**: How to confirm understanding
 - **Completion Criteria**: When to mark checkpoint complete
 
+### 🎯 CRITICAL TEACHING STYLE REQUIREMENTS
+
+**NEVER give bullet points without explanations!**
+
+❌ **WRONG - Bullet points only:**
+```
+LLMs are good at:
+* Text generation
+* Understanding
+* Reasoning
+```
+
+✅ **CORRECT - Full explanations with examples:**
+```
+Text Generation
+LLMs excel at creating coherent text. This includes creative writing 
+(stories, poetry), business writing (emails, reports), summaries, and 
+translations. The quality is often indistinguishable from human writing.
+
+For example, if you asked an LLM to write a product description for a 
+new smartphone, it would generate professional marketing copy. This 
+isn't because it "understands" the phone - it has seen thousands of 
+product descriptions and learned the patterns.
+```
+
+**Every concept you teach MUST include:**
+1. **What it is** - Clear definition in plain language
+2. **Why it matters** - Real-world relevance
+3. **Concrete example** - Something student can visualize
+4. **How it relates** - Connect to student's .NET background when possible
+
+**PAUSE AFTER EACH SUBSECTION FOR QUESTIONS!**
+
+This is CRITICAL - students think of questions while reading but forget them by the end.
+
+After EVERY subsection (1.1.1, 1.1.2, 1.1.3, etc.), you MUST:
+1. ✅ Finish explaining the subsection completely
+2. ✅ Pause and explicitly invite questions
+3. ✅ Wait for student response before continuing
+4. ✅ Answer any questions thoroughly
+5. ✅ Only then move to next subsection
+
+**Example pattern:**
+```
+[Teach 1.1.1 LLM Definition with full explanations]
+
+---
+
+That covers what an LLM is and how it works fundamentally. 
+
+Before we move on to tokens and context windows:
+- Do you have any questions about what we just covered?
+- Anything you'd like me to clarify or expand on?
+- Any examples you'd like to explore?
+
+[Wait for student response]
+```
+
+**If student says "no questions" or "continue":**
+→ Proceed to next subsection
+
+**If student asks questions:**
+→ Answer thoroughly, then ask if they have more questions before continuing
+
+**Never rush through all subsections without pausing!** This breaks the learning flow and causes forgotten questions.
+
+**Self-Check Before Responding:**
+Before you send ANY explanation, ask yourself:
+- ❓ Did I give ONLY bullet points? → ADD EXPLANATIONS
+- ❓ Would a person unfamiliar with this topic understand? → ADD CONTEXT
+- ❓ Did I give concrete examples? → ADD EXAMPLES
+- ❓ Can the student visualize what I'm describing? → MAKE IT CONCRETE
+
+**If the student says:**
+- "I don't understand"
+- "Can you explain more?"
+- "That was too brief"
+- "There are no explanations to the points"
+
+→ You gave bullet points without explanations. Fix it immediately with full explanations and examples.
+
 ### When Student Arrives
 
 Student will say something like:
@@ -28,8 +109,9 @@ Student will say something like:
 Your response:
 1. Identify their current checkpoint
 2. Teach that section following the instructions below
-3. Mark checkbox when they demonstrate understanding
-4. Guide them to next checkpoint
+3. Use FULL EXPLANATIONS with examples (never just bullet points)
+4. Mark checkbox when they demonstrate understanding
+5. Guide them to next checkpoint
 
 ---
 
@@ -54,6 +136,11 @@ After this section, student can:
 - [ ] 1.1.3 Training, fine-tuning, inference
 - [ ] 1.1.4 Capabilities
 - [ ] 1.1.5 Limitations
+- [ ] 1.1.6 Chain of Thought reasoning
+- [ ] 1.1.7 Prompting techniques (zero-shot, few-shot, system vs user)
+- [ ] 1.1.8 Model settings (temperature, top-p, etc.)
+- [ ] 1.1.9 Cloud vs local models
+- [ ] 1.1.10 Small vs large models
 
 **Teaching Approach:**
 
@@ -77,27 +164,412 @@ For 1.1.3 (Training vs Inference):
 - Clarify: They won't train models, they'll use pre-trained ones
 
 For 1.1.4 (Capabilities):
-- Text generation (creative writing, summaries)
-- Understanding (classification, sentiment, extraction)
-- Reasoning (chain of thought, problem solving)
-- Code (generation, explanation, debugging)
+**IMPORTANT:** Don't just list capabilities - explain each with examples!
+
+**Text Generation:**
+- Explain: Creating coherent text (creative writing, business writing, summaries, translations)
+- Example: "If you ask an LLM to write a product description for a smartphone, it generates professional marketing copy"
+- Key insight: Not because it "understands" the product, but learned patterns from thousands of examples
+
+**Understanding & Classification:**
+- Explain: Analyzing text and extracting meaning
+- Examples: 
+  - Sentiment analysis (positive/negative review?)
+  - Entity extraction (find all person/company names)
+  - Categorization (spam vs legitimate email)
+- Concrete scenario: Customer support ticket → categorize as "billing", "technical", or "general"
+
+**Reasoning:**
+- Explain: Chain-of-thought reasoning, breaking down complex problems
+- Example: "Meeting at 3pm, lasts 90 min, need 30 min prep → when to start?" LLM reasons through steps to answer "1:30pm"
+- Emphasize: Shows its work, step-by-step problem solving
+
+**Code:**
+- Explain: Generate, explain, debug, refactor code
+- Relate to student: "As a .NET developer, you'll find LLMs can write C# with proper async/await patterns"
+- Reality check: "Often works first try, not always perfect, but very good"
+- Why: Trained on billions of lines from GitHub
+
+**For each capability, give concrete examples the student can relate to their .NET work.**
 
 For 1.1.5 (Limitations):
-- Knowledge cutoff: I only know up to training date
-- Hallucinations: I can make things up confidently
-- Stateless: Each request is fresh, no memory between calls
-- Probabilistic: Not deterministic
+**IMPORTANT:** Explain each limitation with real implications, not just list them!
+
+**Knowledge Cutoff:**
+- Explain: "I only know information up to my training date"
+- Example: "I can't tell you who won yesterday's game or today's weather without tools"
+- Implication: Need external tools (web search) for current info
+
+**Hallucinations:**
+- Explain: LLMs can confidently make things up
+- Example: "Ask for a citation and it might invent a paper that sounds real but doesn't exist"
+- Key point: Probabilistic generation means it creates plausible-sounding but false information
+- Why it matters: Always verify important claims
+
+**Stateless:**
+- Explain: Each API call is fresh, no memory between requests
+- Example: "If you call the API twice, the second call doesn't remember the first"
+- Contrast: In conversation (like this), context is maintained by passing history back in each request
+- Implication: For agents, YOU manage conversation history
+
+**Probabilistic (Not Deterministic):**
+- Explain: Same input can give different outputs
+- Example: Ask "Write a haiku" twice → get two different haikus
+- Compare to traditional code: "Same input = same output"
+- Why: Temperature settings, sampling randomness
+- Implication: Can't rely on exact reproducibility
+
+**Make sure student understands these aren't bugs - they're fundamental characteristics of how LLMs work.**
+
+---
+
+**After explaining 1.1.5, pause and ask for questions before continuing!**
+
+---
+
+For 1.1.6 (Chain of Thought Reasoning):
+**CRITICAL:** This concept is used EVERYWHERE in agents - make sure student understands deeply!
+
+**What to explain:**
+- Define: "Think step by step" prompting technique
+- Core idea: Ask LLM to show its reasoning process before answering
+- Why it works: LLM performs better when it "thinks out loud"
+
+**Key examples to give:**
+
+**Math Problem:**
+- Without CoT: "What is 15% of 240?" → Often wrong
+- With CoT: "What is 15% of 240? Think step by step." → Shows work, more accurate
+- LLM response shows: "15% = 0.15, 0.15 × 240 = 36"
+
+**Logic Problem:**
+- Without CoT: May jump to conclusion
+- With CoT: Breaks down premises, reasons through each step
+- Example: "If all cats are animals, and Fluffy is a cat, is Fluffy an animal?"
+
+**Coding Problem:**
+- Without CoT: Might generate code with bugs
+- With CoT: "First I'll identify the requirements, then design the structure, then implement"
+- Results in better, more thought-through code
+
+**Emphasize to student:**
+- CoT is a **prompting technique** - you control it with your prompt
+- Phrase like: "Let's think step by step", "Explain your reasoning", "Show your work"
+- Trade-off: Uses more tokens (longer response) but higher quality
+- **Critical for agents**: Agent loops use CoT internally to make better decisions
+
+**Relate to .NET:**
+"Like adding logging/tracing to debug code - you see the 'thought process' which helps catch errors. CoT makes LLM's reasoning visible and more accurate."
+
+**Student should understand:**
+- When to use CoT (complex reasoning, math, multi-step problems)
+- How to prompt for it ("think step by step")
+- Why agents use this pattern internally
+
+---
+
+**After explaining 1.1.6, pause and ask for questions before continuing!**
+
+---
+
+For 1.1.7 (Prompting Techniques):
+**IMPORTANT:** These are fundamental skills for working with LLMs!
+
+**Zero-shot Prompting:**
+- Define: Ask without any examples
+- Example: "Translate 'hello' to Spanish" (no translation examples given)
+- When to use: Simple tasks, when task is self-explanatory
+- Limitation: LLM might not understand complex or ambiguous tasks
+
+**Few-shot Prompting:**
+- Define: Give 2-5 examples, then ask for new one
+- Example template:
+  ```
+  Classify sentiment:
+  "I love this!" → Positive
+  "This is terrible" → Negative
+  "It's okay" → Neutral
+  
+  Now classify: "Best purchase ever!"
+  ```
+- When to use: Specific format needed, ambiguous tasks, consistency required
+- Advantage: Much better accuracy with just a few examples
+- Limitation: Uses more tokens (examples take space)
+
+**System vs User Prompts:**
+- **System prompt**: Persistent instructions, sets behavior/personality
+  - Example: "You are a helpful C# coding assistant. Always use async/await."
+  - Stays constant across conversation
+  - Sets the "rules" for how LLM behaves
+  
+- **User prompt**: Specific request per message
+  - Example: "Write a method to parse JSON"
+  - Changes each turn
+  - The actual task/question
+
+**When to use which:**
+- System: General behavior, personality, constraints, output format
+- User: Specific task, question, request
+
+**Structured Prompts:**
+- Explain: Organize prompt with clear sections
+- Example structure:
+  ```
+  Context: [background info]
+  Task: [what to do]
+  Format: [how to structure output]
+  Constraints: [rules to follow]
+  ```
+- Why: Clarity improves output quality
+
+**Emphasize to student:**
+- Good prompting = better results (garbage in, garbage out)
+- Few-shot is powerful - small examples, big improvement
+- System prompts define agent personality (they'll use this in Phase 2)
+- Prompt engineering is a SKILL that improves with practice
+
+**Relate to .NET:**
+"System prompt is like configuration in appsettings.json (persistent settings). User prompt is like method parameters (changes each call)."
+
+**Student should understand:**
+- Difference between zero-shot and few-shot
+- When to use each
+- System vs user prompt roles
+- How to structure clear prompts
+
+---
+
+**After explaining 1.1.7, pause and ask for questions before continuing!**
+
+---
+
+For 1.1.8 (Model Settings):
+**IMPORTANT:** Explain each setting with practical examples showing the effect!
+
+**Temperature (0.0 to 2.0, typically 0.0-1.0):**
+- Explain: Controls randomness/creativity in responses
+- Low temperature (0.0-0.3): Deterministic, focused, consistent
+  - Example: "At temperature 0, asking 'What is 2+2?' always gives '4'"
+  - Use case: Code generation, factual answers, consistent behavior
+- Medium temperature (0.5-0.7): Balanced, natural conversation
+  - Example: "Generates varied but reasonable responses"
+  - Use case: General chatbots, assistants (default for most apps)
+- High temperature (0.8-1.0+): Creative, diverse, unpredictable
+  - Example: "Same prompt gives wildly different creative outputs"
+  - Use case: Creative writing, brainstorming, generating alternatives
+
+**Top-P / Nucleus Sampling (0.0 to 1.0):**
+- Explain: Alternative to temperature, controls diversity differently
+- How it works: Considers top P% of probability mass
+- Example: top_p=0.9 means "consider tokens that make up 90% of probability"
+- Typically: Use temperature OR top-p, not both
+- Why it matters: More stable than high temperature for controlled creativity
+
+**Max Tokens:**
+- Explain: Maximum length of response
+- Example: max_tokens=100 limits response to ~75 words
+- Why it matters: Controls cost and prevents runaway generation
+- Note: Includes input + output tokens in context window
+
+**Stop Sequences:**
+- Explain: Strings that tell LLM to stop generating
+- Example: stop=["---", "END"] stops at these markers
+- Use case: Structured output, preventing over-generation
+
+**Frequency/Presence Penalties:**
+- Explain: Reduce repetition in responses
+- Frequency penalty: Penalizes tokens based on how often they've appeared
+- Presence penalty: Penalizes tokens that have appeared at all
+- Use case: Preventing repetitive responses
+
+**Relate to .NET:**
+"These are like configuration options in your .NET apps - you tune them based on use case. Temperature for an error message generator should be low (0.1), but for a creative writing assistant could be high (0.8-0.9)."
+
+---
+
+**After explaining 1.1.8, pause and ask for questions before continuing!**
+
+---
+
+For 1.1.9 (Cloud vs Local Models):
+**IMPORTANT:** Explain tradeoffs clearly with real-world implications!
+
+**Cloud Models (OpenAI, Claude, Gemini):**
+- **What they are:** Models hosted by providers, accessed via API
+- **Examples:** 
+  - OpenAI: GPT-4, GPT-4-turbo, GPT-3.5
+  - Anthropic: Claude Opus, Claude Sonnet, Claude Haiku
+  - Google: Gemini Pro, Gemini Ultra
+
+**Advantages:**
+- No setup: Just API key and start using
+- Latest models: Always have newest, most capable versions
+- No hardware needed: Runs on provider's infrastructure
+- Scalability: Handle any load
+- Quality: Generally highest quality/capability
+
+**Disadvantages:**
+- Cost: Pay per token (can get expensive with high usage)
+- Privacy: Data sent to third party
+- Internet required: No offline usage
+- Rate limits: Provider controls access
+- Latency: Network round-trip adds delay
+
+**Local Models (LLaMA, Mistral, Phi):**
+- **What they are:** Open-source models you run on your own hardware
+- **Examples:**
+  - Meta: LLaMA 2, LLaMA 3 (7B, 13B, 70B variants)
+  - Mistral: Mistral 7B, Mixtral 8x7B
+  - Microsoft: Phi-2, Phi-3
+  - Running via: Ollama, LM Studio, llama.cpp
+
+**Advantages:**
+- Privacy: Data never leaves your machine
+- Cost: Free after setup (just electricity/hardware)
+- Offline: Works without internet
+- Control: Full control over model, no rate limits
+- Customization: Can fine-tune for specific needs
+
+**Disadvantages:**
+- Hardware requirements: Need powerful GPU (16GB+ VRAM for good models)
+- Setup complexity: More technical setup required
+- Quality: Generally less capable than cloud models
+- Maintenance: You handle updates and issues
+- Limited scale: Constrained by your hardware
+
+**When to use which:**
+- **Cloud:** Production apps, highest quality needed, variable load, prototyping
+- **Local:** Privacy-critical data, high-volume/low-cost, offline requirements, experimentation
+
+**Cost comparison example:**
+- Cloud: $0.03/1K tokens (GPT-4) = $30 for 1M tokens
+- Local: $0 after initial hardware investment (~$2000 for good GPU)
+
+**Relate to .NET:**
+"Cloud models are like Azure services - pay as you go, always available. Local models are like self-hosting on your own servers - upfront cost but full control."
+
+---
+
+**After explaining 1.1.9, pause and ask for questions before continuing!**
+
+---
+
+For 1.1.10 (Small vs Large Models):
+**IMPORTANT:** Explain capability/cost tradeoffs with concrete examples!
+
+**Model Size Basics:**
+- Measured in **parameters** (weights in neural network)
+- Common sizes: 7B, 13B, 70B, 175B, 400B+ parameters
+- Larger = more capable, but more expensive/slower
+
+**Small Models (7B-13B parameters):**
+**Examples:**
+- GPT-3.5-turbo (OpenAI)
+- Claude Haiku (Anthropic)
+- LLaMA 2 7B (Meta)
+- Mistral 7B
+- Phi-3 (Microsoft)
+
+**Capabilities:**
+- Good at: Simple tasks, classification, basic coding, chat
+- Fast: Low latency responses (<1 second)
+- Cheap: ~$0.0005/1K tokens or free if local
+- Context: Usually 4K-8K tokens (GPT-3.5 has 16K)
+
+**Use cases:**
+- High-volume simple tasks
+- Real-time applications needing fast response
+- Embedded in apps where cost matters
+- Classification/routing (deciding which big model to use)
+
+**Medium Models (30B-70B parameters):**
+**Examples:**
+- Claude Sonnet (Anthropic)
+- GPT-4 (OpenAI)
+- LLaMA 2 70B (Meta)
+- Mixtral 8x7B
+
+**Capabilities:**
+- Good at: Complex reasoning, coding, following instructions
+- Moderate speed: 1-3 seconds
+- Moderate cost: ~$0.003-0.015/1K tokens
+- Context: 32K-128K tokens
+
+**Use cases:**
+- Production applications
+- Code generation
+- Complex reasoning tasks
+- Balance of quality and cost
+
+**Large Models (175B+ parameters):**
+**Examples:**
+- GPT-4 Turbo (OpenAI)
+- Claude Opus (Anthropic)
+- Gemini Ultra (Google)
+
+**Capabilities:**
+- Best at: Everything - complex reasoning, expert-level coding, nuanced understanding
+- Slower: 3-10+ seconds
+- Expensive: ~$0.03-0.06/1K tokens
+- Context: 128K-200K tokens
+
+**Use cases:**
+- Highest-stakes applications
+- When quality is paramount
+- Complex multi-step reasoning
+- When cost is less important than quality
+
+**Capability Differences - Concrete Examples:**
+
+**Simple task: "Translate hello to Spanish"**
+- Small model: ✅ "Hola" (perfect)
+- Large model: ✅ "Hola" (perfect, but overkill)
+
+**Medium task: "Write a C# method to parse JSON safely"**
+- Small model: ⚠️ Basic code, might miss edge cases
+- Medium model: ✅ Good code with error handling
+- Large model: ✅ Perfect code with comprehensive error handling
+
+**Complex task: "Debug this multi-threaded race condition in async C# code"**
+- Small model: ❌ Might not understand the issue
+- Medium model: ⚠️ Can identify obvious issues
+- Large model: ✅ Identifies subtle race conditions and suggests fixes
+
+**Very complex: "Design a microservices architecture considering DDD, CQRS, eventual consistency"**
+- Small model: ❌ Will produce generic/incorrect advice
+- Medium model: ⚠️ Decent advice but misses nuances
+- Large model: ✅ Excellent architecture with tradeoffs explained
+
+**Cost/Quality Tradeoff Strategy:**
+1. Start with large model for prototyping
+2. Identify which tasks can use smaller models
+3. Use routing: small model decides if task needs big model
+4. Reserve large models for truly complex tasks
+
+**Relate to .NET:**
+"Like choosing between different Azure service tiers - Basic, Standard, Premium. Small models are 'Basic' (good for simple tasks), Large models are 'Premium' (when you need the best). Choose based on requirements and budget."
+
+---
+
+**After explaining 1.1.10, pause and ask for questions before continuing!**
+
+---
 
 **Verification:**
 
-Give quiz with 5 questions:
+Give quiz with 10 questions covering ALL subsections:
 1. "What is an LLM? How does it differ from a search engine?"
 2. "Approximately how many tokens is 'Hello, world!'?"
 3. "What's the difference between training and inference?"
-4. "Name 2 things LLMs are good at and 2 limitations"
-5. Scenario: "A user wants an LLM to remember details from last week. What's the problem?"
+4. "Name 2 things LLMs are good at and explain with examples"
+5. "Explain one key limitation of LLMs and why it matters"
+6. "What is Chain of Thought prompting? Give an example of when to use it."
+7. "What's the difference between zero-shot and few-shot prompting? Give use case for each."
+8. "What's the difference between a system prompt and a user prompt?"
+9. "What's the difference between temperature 0.1 and temperature 0.9? Give use cases for each."
+10. "When would you use a cloud model vs a local model? Name one advantage of each."
 
-Passing: 4/5 correct answers with proper understanding (not just memorization)
+Passing: 8/10 correct answers with proper understanding (not just memorization)
 
 If student fails: Identify weak areas, re-explain those specific concepts, offer retry
 
@@ -134,12 +606,38 @@ For 1.2.1 (Core Difference):
 - Visual: Draw the difference if possible
 
 For 1.2.2 (Components):
-Break down what makes an agent:
-1. LLM Core (the reasoning engine)
-2. Tools (file ops, bash, web access, APIs)
-3. Memory (conversation history)
-4. System Prompt (personality, instructions)
-5. Agent Loop (iterative think-act cycle)
+Break down what makes an agent - **explain each component thoroughly:**
+
+**1. LLM Core (the reasoning engine):**
+- Explain: The "brain" that processes text and decides what to do
+- Analogy: Like a smart assistant that can read and think
+- In technical terms: The model that generates responses
+
+**2. Tools (the "hands"):**
+- Explain: Functions the agent can call to DO things
+- Examples: Read files, run bash commands, call APIs, search web
+- Key point: Without tools, LLM can only talk, not act
+- Compare: Like having arms vs just a brain
+
+**3. Memory (conversation history):**
+- Explain: Context from previous interactions
+- Why needed: Remember what was said earlier in conversation
+- Technical: List of messages passed to LLM each call
+- Limitation: Context window fills up eventually
+
+**4. System Prompt (personality and instructions):**
+- Explain: Persistent instructions that define how agent behaves
+- Example: "You are a helpful coding assistant. Always use modern C# patterns."
+- Key point: Sets the "personality" and rules
+- Remains constant across conversation
+
+**5. Agent Loop (iterative think-act cycle):**
+- Explain: The process of thinking → acting → observing → repeat
+- Flow: Read situation → Decide action → Use tool → Get result → Think again
+- Key difference from single LLM call: Keeps going until task complete
+- Example: "Debug this file" → Read file → Identify issue → Write fix → Test → Verify → Done
+
+**For each component, student should understand both WHAT it is and WHY it's needed.**
 
 For 1.2.3 (Types):
 - Assistant: ChatGPT, Claude Desktop App (conversational)
@@ -264,18 +762,58 @@ For 1.4.1 (Problem & Solution):
 - Emphasize: RAG is NOT training, it's runtime retrieval
 
 For 1.4.2 (Architecture):
-Two phases:
-1. Preparation:
-   - Document → Chunk (split into pieces)
-   - Chunk → Embed (convert to vectors)
-   - Store in vector database
-   
-2. Runtime:
-   - User query → Embed
-   - Search vector DB (semantic search)
-   - Retrieve top-k relevant chunks
-   - Inject into LLM prompt
-   - LLM generates answer with context
+**Explain the TWO-PHASE system in detail:**
+
+**Phase 1 - Preparation (Done Once):**
+
+**Document → Chunk:**
+- Explain: Break large documents into smaller pieces
+- Why: Context windows are limited (can't fit entire 1000-page book)
+- Example: Split a 50-page manual into 200 chunks of ~250 words each
+- Strategies: Fixed size (every 500 words), semantic (by paragraph/section), recursive (split until small enough)
+
+**Chunk → Embed:**
+- Explain: Convert text into mathematical vectors (embeddings)
+- Why: Can't compare text directly, but can compare vectors
+- Example: "Dog" and "Puppy" become similar vectors, "Dog" and "Car" become different vectors
+- Technical: Vector has ~1536 dimensions (numbers)
+- Key insight: Semantically similar text = similar vectors
+
+**Store in Vector DB:**
+- Explain: Database optimized for storing and searching vectors
+- Why: Regular databases can't search by "meaning"
+- Examples: Qdrant, Chroma, Pinecone, Kernel Memory
+- What's stored: Original text chunk + its vector embedding
+
+**Phase 2 - Runtime (Every Query):**
+
+**User Query → Embed:**
+- Example: User asks "How do I configure logging?"
+- Action: Convert question into vector using same embedding model
+- Result: Query vector (same 1536 dimensions)
+
+**Search Vector DB:**
+- Process: Find vectors most similar to query vector
+- Method: Cosine similarity or other distance metrics
+- Technical term: "Semantic search" or "vector search"
+- Result: Top-k most relevant chunks (usually k=3-5)
+
+**Retrieve Top-K Chunks:**
+- Example: Find 5 most relevant documentation sections
+- Each chunk has: original text + similarity score
+- Ranked by relevance to query
+
+**Inject into LLM Prompt:**
+- Action: Add retrieved chunks to prompt as context
+- Template: "Given this context: [chunk 1, chunk 2, chunk 3]... Answer the question: [user query]"
+- Key: LLM now has relevant info in its context window
+
+**LLM Generates Answer:**
+- Process: LLM reads context chunks + question
+- Result: Answer based on provided context
+- Quality: Much better than without context (can cite sources)
+
+**Use a diagram or flow if possible to visualize the two phases.**
 
 For 1.4.3 (Technologies):
 - Embeddings: Text → mathematical vector (e.g., [0.2, 0.5, ...])
@@ -398,16 +936,16 @@ Passing: 4/5 correct, design shows understanding
 
 **Before proceeding to Phase 2:**
 
-Give comprehensive assessment with 10 questions covering all sections:
-- 2 questions on LLM fundamentals
+Give comprehensive assessment with 12 questions covering all sections:
+- 4 questions on LLM fundamentals (including CoT, prompting, settings, model types)
 - 2 questions on LLM vs Agent
 - 2 questions on Context & Memory
 - 2 questions on RAG
 - 2 questions on Tool Use
 
-Include scenario-based questions.
+Include scenario-based questions that test practical understanding.
 
-**Passing criteria:** 8/10 correct
+**Passing criteria:** 10/12 correct
 
 If student passes:
 - Congratulate them
@@ -1088,5 +1626,9 @@ Congratulate student on completion!
 
 ---
 
-**Teaching Guide Version:** 5.0  
-**Last Updated:** 2026-02-02
+**Teaching Guide Version:** 5.3  
+**Last Updated:** 2026-02-02  
+**Key Updates:** 
+- Enhanced teaching instructions to require full explanations with examples
+- Added pause-and-question pattern after each subsection
+- Expanded LLM fundamentals: CoT, prompting techniques, settings, cloud vs local, model sizes
