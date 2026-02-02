@@ -1,0 +1,149 @@
+# AI Agent Learning - .gitignore
+
+# ======================
+# SECRETS & API KEYS
+# ======================
+*.env
+.env.*
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+**/appsettings.*.json
+!**/appsettings.json
+
+# User Secrets (don't commit API keys!)
+**/secrets/
+UserSecrets/
+
+# ======================
+# .NET BUILD OUTPUTS
+# ======================
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+
+# ======================
+# VECTOR DATABASES
+# ======================
+# Qdrant data
+qdrant_data/
+*.qdrant/
+
+# ChromaDB data
+chroma_data/
+*.chroma/
+
+# Any vector DB storage
+vector_db/
+embeddings/
+*.index
+*.faiss
+
+# ======================
+# AI ARTIFACTS
+# ======================
+# Large model files
+*.pkl
+*.h5
+*.onnx
+*.safetensors
+
+# Training data
+training_data/
+datasets/
+
+# ======================
+# LOGS & OUTPUTS
+# ======================
+*.log
+logs/
+*.txt.log
+serilog-*.txt
+
+# ======================
+# IDE & OS
+# ======================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# JetBrider Rider
+.idea/
+*.sln.iml
+
+# ======================
+# PROJECT SPECIFIC
+# ======================
+# Personal notes
+notes.md
+todo.md
+scratch/
+temp/
+my-notes/
+
+# If you want to keep your implementations private (recommended),
+# uncomment the lines below:
+# **/SimpleAgent/SimpleAgent/**/*.cs
+# **/CalculatorAgent/CalculatorAgent/**/*.cs
+# **/RAGDemo/**/*.cs
+# **/ResearchAssistant/**/*.cs
+# **/GitHubIssueAgent/**/*.cs
+# **/CapstoneProject/**/*.cs
+
+# But keep project files for structure reference
+!**/*.csproj
+!**/*.sln
+
+# ======================
+# OPTIONAL: Uncomment if needed
+# ======================
+# If you want to exclude ALL student implementations:
+# projects/**/*/
+# !projects/**/CLAUDE.md
+# !projects/**/*.csproj
+# !projects/**/*.sln
