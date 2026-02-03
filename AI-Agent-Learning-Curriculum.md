@@ -795,23 +795,41 @@ For 1.1.12 (Small vs Large Models):
 
 **Verification:**
 
-Give quiz with 12 questions covering ALL subsections:
-1. "What is an LLM? How does it differ from a search engine?"
-2. "Approximately how many tokens is 'Hello, world!'?"
-3. "What's the difference between training and inference?"
-4. "Name 2 things LLMs are good at and explain with examples"
-5. "What can vision models do? Give 2 practical examples for .NET developers."
-6. "Explain one key limitation of LLMs and why it matters"
-7. "What is Chain of Thought prompting? When should you use it?"
-8. "What's the difference between zero-shot and few-shot prompting? Give use case for each."
-9. "What's the difference between a system prompt and a user prompt?"
-10. "What is prompt injection? Give one example attack and one defense strategy."
-11. "What's the difference between temperature 0.1 and temperature 0.9? Give use cases for each."
-12. "When would you use a cloud model vs a local model? Name one advantage of each."
+Give INTERACTIVE quiz with 12 questions (ONE AT A TIME):
+
+**Quiz Flow:**
+1. Present Question 1/12
+2. Wait for student answer
+3. Provide immediate feedback:
+   - ✅ "Correct! [Brief explanation why answer is correct]"
+   - ❌ "Not quite. The correct answer is [X]. [Brief explanation]"
+4. Move to Question 2/12
+5. Repeat until all 12 questions completed
+
+**Questions to ask (one at a time):**
+
+Q1: "What is an LLM? How does it differ from a search engine?"
+Q2: "Approximately how many tokens is 'Hello, world!'?"
+Q3: "What's the difference between training and inference?"
+Q4: "Name 2 things LLMs are good at and explain with examples"
+Q5: "What can vision models do? Give 2 practical examples for .NET developers."
+Q6: "Explain one key limitation of LLMs and why it matters"
+Q7: "What is Chain of Thought prompting? When should you use it?"
+Q8: "What's the difference between zero-shot and few-shot prompting? Give use case for each."
+Q9: "What's the difference between a system prompt and a user prompt?"
+Q10: "What is prompt injection? Give one example attack and one defense strategy."
+Q11: "What's the difference between temperature 0.1 and temperature 0.9? Give use cases for each."
+Q12: "When would you use a cloud model vs a local model? Name one advantage of each."
+
+**After Quiz - Final Results:**
+
+Show score: X/12 correct (percentage%)
+
+Identify weak areas from wrong answers and re-explain those specific concepts briefly.
 
 Passing: 10/12 correct answers with proper understanding (not just memorization)
 
-If student fails: Identify weak areas, re-explain those specific concepts, offer retry
+If student fails: Identify weak areas, re-explain those specific concepts with additional examples, offer retry when student feels ready
 
 **Mark Complete When:**
 - [ ] 1.1.Q Student passed quiz (4/5 or better)
@@ -903,12 +921,26 @@ Guide them to notice:
 
 **Verification:**
 
-Quiz with 5 questions:
-1. "What's the key difference between an LLM call and an agent?"
-2. "Name the 5 core components of an agent"
-3. "Is ChatGPT an LLM or an Agent? Explain."
-4. "What is the ReAct pattern?"
-5. Scenario: "You ask Claude Code to debug a file. It reads the file, analyzes it, writes a fix, tests it. Which agent components are at work?"
+Give INTERACTIVE quiz with 5 questions (ONE AT A TIME):
+
+**Quiz Flow:**
+1. Present Question 1/5
+2. Wait for student answer
+3. Provide immediate feedback (✅ Correct! / ❌ Not quite. Correct answer is...)
+4. Move to Question 2/5
+5. Repeat until complete
+
+**Questions (one at a time):**
+
+Q1: "What's the key difference between an LLM call and an agent?"
+Q2: "Name the 5 core components of an agent"
+Q3: "Is ChatGPT an LLM or an Agent? Explain."
+Q4: "What is the ReAct pattern?"
+Q5: Scenario: "You ask Claude Code to debug a file. It reads the file, analyzes it, writes a fix, tests it. Which agent components are at work?"
+
+**After Quiz:**
+Show score: X/5 correct
+Re-explain weak areas if needed
 
 Passing: 4/5 correct
 
@@ -960,12 +992,26 @@ For 1.3.3 (Memory Systems):
 
 **Verification:**
 
-Quiz with 5 questions:
-1. "What's the difference between system and user prompts?"
-2. "What happens when context window fills up?"
-3. "Explain few-shot learning with an example"
-4. "What's the difference between short-term and long-term memory?"
-5. Design task: "Design a system prompt for a code review agent"
+Give INTERACTIVE quiz with 5 questions (ONE AT A TIME):
+
+**Quiz Flow:**
+1. Present Question 1/5
+2. Wait for answer
+3. Immediate feedback (✅ Correct! / ❌ Not quite...)
+4. Continue to next
+5. Repeat
+
+**Questions (one at a time):**
+
+Q1: "What's the difference between system and user prompts?"
+Q2: "What happens when context window fills up?"
+Q3: "Explain few-shot learning with an example"
+Q4: "What's the difference between short-term and long-term memory?"
+Q5: Design task: "Design a system prompt for a code review agent"
+
+**After Quiz:**
+Show score: X/5
+Re-explain weak areas
 
 Passing: 4/5 correct, design task shows understanding
 
@@ -1081,13 +1127,23 @@ Point out: "Claude Code skills are a form of RAG - they're documents retrieved w
 
 **Verification:**
 
-Quiz with 6 questions:
-1. "What problem does RAG solve?"
-2. "Describe the RAG preparation phase"
-3. "Describe the RAG runtime phase"
-4. "What are embeddings? (conceptually)"
-5. "When would you use RAG instead of fine-tuning?"
-6. Scenario: "You have 10,000 pages of documentation that updates weekly. RAG or fine-tuning?"
+Give INTERACTIVE quiz with 6 questions (ONE AT A TIME):
+
+**Quiz Flow:**
+Present each question, wait for answer, provide immediate feedback, then continue.
+
+**Questions (one at a time):**
+
+Q1: "What problem does RAG solve?"
+Q2: "Describe the RAG preparation phase"
+Q3: "Describe the RAG runtime phase"
+Q4: "What are embeddings? (conceptually)"
+Q5: "When would you use RAG instead of fine-tuning?"
+Q6: Scenario: "You have 10,000 pages of documentation that updates weekly. RAG or fine-tuning?"
+
+**After Quiz:**
+Show score: X/6
+Re-explain weak areas
 
 Passing: 5/6 correct
 
@@ -1154,12 +1210,22 @@ Expected answer should include:
 
 **Verification:**
 
-Quiz + Design Review:
-1. "Why can't an LLM read a file without tools?"
-2. "Describe the function calling flow"
-3. "What makes a tool 'well-designed'?"
-4. "Name 3 tool categories and give examples"
-5. Design review: Evaluate their send_email tool design
+Give INTERACTIVE quiz + design review with 5 questions (ONE AT A TIME):
+
+**Quiz Flow:**
+Present each question, wait for answer, provide immediate feedback, then continue.
+
+**Questions (one at a time):**
+
+Q1: "Why can't an LLM read a file without tools?"
+Q2: "Describe the function calling flow"
+Q3: "What makes a tool 'well-designed'?"
+Q4: "Name 3 tool categories and give examples"
+Q5: Design review: Evaluate their send_email tool design
+
+**After Quiz:**
+Show score: X/5
+Re-explain weak areas
 
 Passing: 4/5 correct, design shows understanding
 
@@ -1176,7 +1242,12 @@ Passing: 4/5 correct, design shows understanding
 
 **Before proceeding to Phase 2:**
 
-Give comprehensive assessment with 14 questions covering all sections:
+Give INTERACTIVE comprehensive assessment with 14 questions (ONE AT A TIME):
+
+**Quiz Flow:**
+Present each question individually, wait for answer, provide immediate feedback, then continue to next question.
+
+**Coverage:**
 - 5 questions on LLM fundamentals (including vision, CoT, prompting, safety, settings, model types)
 - 2 questions on LLM vs Agent
 - 2 questions on Context & Memory
@@ -1185,17 +1256,22 @@ Give comprehensive assessment with 14 questions covering all sections:
 
 Include scenario-based questions that test practical understanding and security awareness.
 
-**Passing criteria:** 11/14 correct
+**After All 14 Questions:**
+Show final score: X/14 (percentage%)
+Review all incorrect answers with explanations
+Identify knowledge gaps by topic
+
+**Passing criteria:** 11/14 correct (79%)
 
 If student passes:
-- Congratulate them
+- Congratulate them enthusiastically
 - Explain they're ready for hands-on building
 - Guide to Phase 2 start
 
 If student fails:
-- Identify weak areas
-- Offer to review those sections
-- Suggest retry when ready
+- Identify weak areas from wrong answers
+- Offer to review those sections thoroughly with additional examples
+- Suggest retry when ready - no shame, learning takes time
 
 **Mark Complete When:**
 - [ ] 1.FINAL Student scored 8/10 or better on final assessment
@@ -1866,9 +1942,10 @@ Congratulate student on completion!
 
 ---
 
-**Teaching Guide Version:** 5.4  
+**Teaching Guide Version:** 5.5  
 **Last Updated:** 2026-02-02  
 **Key Updates:** 
 - Enhanced teaching instructions to require full explanations with examples
 - Added pause-and-question pattern after each subsection
 - Expanded LLM fundamentals: vision/multimodal, CoT, prompting, safety, settings, cloud vs local, model sizes
+- **Interactive quiz flow (v5.5): ONE question at a time with immediate feedback**
